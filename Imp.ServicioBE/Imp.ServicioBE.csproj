@@ -1,0 +1,66 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{A11CF2F9-A894-476A-B4DA-4B4C6B5DE0F2}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Imp.ServicioBE</RootNamespace>
+    <AssemblyName>Imp.ServicioBE</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Backup_ServicioBE.cs" />
+    <Compile Include="BitacoraBE.cs" />
+    <Compile Include="BitacoraUsuario_ServicioBE.cs" />
+    <Compile Include="DVV_BE.cs" />
+    <Compile Include="Etiqueta_ServicioBE.cs" />
+    <Compile Include="Familia_ServicioBE.cs" />
+    <Compile Include="Idioma_ServicioBE.cs" />
+    <Compile Include="Permiso_ServicioBE.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Traduccion_ServicioBE.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\fw.Interfaces\fw.Interfaces.csproj">
+      <Project>{0d4eaca1-3684-49fb-a423-326e525eff07}</Project>
+      <Name>fw.Interfaces</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\fw.ServicioBE\fw.ServicioBE.csproj">
+      <Project>{ff38b677-3476-4693-898e-d25cb58d4638}</Project>
+      <Name>fw.ServicioBE</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
