@@ -1,23 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using fw.ServicioBE;
-using fw.Servicio.BLL;
-using Imp.ServicioBE;
-using fw.Interfaces;
-using Imp.Servicio.Repositorio;
+﻿using fw.ServiceManager.Services;
+using Imp.ServicesManagerEntities;
+using Imp.ServicesManager.Repositories;
 
-namespace Imp.Servicio
+namespace Imp.ServicesManager
 {
-    public class Bitacora_ServicioBLL : Servicio<BitacoraBE>
+    public class Bitacora_ServicioBLL : ServiceManager<BitacoraBE>
     {
-
         public Bitacora_ServicioBLL() : base(new Bitacora_ServicioRepo())
-        { }
-
-
-
+        {
+        }
     }
 }

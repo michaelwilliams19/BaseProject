@@ -1,50 +1,41 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using fw.Servicio.Repositorio;
-using fw.ServicioBE;
-using Imp.ServicioBE;
+﻿using System.Collections.Generic;
+using fw.ServiceManager.Repositories;
+using Imp.ServicesManagerEntities;
 using SQL.Provider;
-using Imp.BE;
+using Imp.Entities;
 
-
-namespace Imp.Servicio.Repositorio
+namespace Imp.ServicesManager.Repositories
 {
-    public class Permiso_ServicioRepo : ServicioRepositorio<Permiso_ServicioBE>
+    public class Permiso_ServicioRepo : ServiceManagerRepository<Permiso_ServicioBE>
     {
         PermisoSQL perm = new PermisoSQL();
 
         public Permiso_ServicioRepo() : base(new PermisoSQL())
-        { }
-
-        public override void Alta(Permiso_ServicioBE BE)
-        {
-            _Contexto.Alta(BE);
+        { 
         }
 
-        public override void Baja(Permiso_ServicioBE BE)
+        public override void Save(Permiso_ServicioBE BE)
         {
-            _Contexto.Baja(BE);
+            context.Save(BE);
         }
 
-        public override IList<Permiso_ServicioBE> Listar()
+        public override void Delete(Permiso_ServicioBE BE)
         {
-            return _Contexto.Listar();
+            context.Delete(BE);
         }
 
-        public override void Modificar(Permiso_ServicioBE BE)
+        public override IList<Permiso_ServicioBE> ListAll()
         {
-            _Contexto.Modificar(BE);
+            return context.ListAll();
         }
 
-
-
+        public override void Update(Permiso_ServicioBE BE)
+        {
+            context.Update(BE);
+        }
 
         public void AgregarHijoAFamilia(Permiso_ServicioBE familia, Permiso_ServicioBE permiso)
-        {
-            
+        {           
             perm.AgregarHijoBD(familia, permiso);
         }
 
@@ -53,22 +44,14 @@ namespace Imp.Servicio.Repositorio
             perm.EliminarHijo(familia, permiso);
         }
 
-
         public IList<Permiso_ServicioBE> ObtenerHijos(Permiso_ServicioBE p)
         {
-
             return perm.ObtenerHijosBD(p);
         }
 
         public IList<Permiso_ServicioBE> ListarPermisosXusuario(UsuarioBE usuBE)
         {
             return perm.ListarPermisosXUsuario(usuBE);
-
         }
-
-
-
-
-
     }
 }

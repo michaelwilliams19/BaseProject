@@ -1,50 +1,35 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using fw.Interfaces;
-using fw.BLL;
-using fw.BE;
-using Imp.BE;
-using fw.Repositorio;
-using Imp.Repositorio;
-using fw.Seguridad;
-using fw.ServicioBE;
-using Imp.ServicioBE;
-using fw.Servicio.BLL;
-using Imp.Servicio;
+using fw.Services;
+using Imp.Entities;
+using Imp.Repositories;
+using fw.Security;
+using Imp.ServicesManagerEntities;
+using Imp.ServicesManager;
 
-
-namespace Imp.BLL
+namespace Imp.Services
 {
-    public class UsuarioBLL : BLL<UsuarioBE>
-
+    public class UsuarioBLL : Service<UsuarioBE>
     {
-        UsuarioRepositorio UsuRepositorio = new UsuarioRepositorio();
         Encriptacion encriptador = new Encriptacion();
-
+        UsuarioRepositorio UsuRepositorio = new UsuarioRepositorio();
         BitacoraUsuario_ServicioBLL BitacoraUsuarioBLL = new BitacoraUsuario_ServicioBLL();
-
-
-
 
         public UsuarioBLL() : base(new UsuarioRepositorio())
         {
-
         }
 
-        
-        public new void Alta(UsuarioBE BE)
+        public override void Save(UsuarioBE BE)
         {
-            
-            
-           BE.Clave= encriptador.Encriptar(BE.Clave);
-           base.Alta(BE);
-
-            
+            BE.clave = encriptador.Encriptar(BE.clave);
+            base.Save(BE);
             BitacoraUsuarioBLL.RegistrarEnBitacora(Singleton.Instancia.DevolverUsuarioActivo(), BE);
+        }
 
+        public override void Update(UsuarioBE BE)
+        {
+            BE.clave = encriptador.Encriptar(BE.clave);
+            base.Update(BE);
         }
 
         public int ObtenerID()
@@ -52,31 +37,15 @@ namespace Imp.BLL
             return UsuRepositorio.ObtenerID();
         }
 
-
-
-        public new void Modificar(UsuarioBE BE)
-        {
-
-            BE.Clave = encriptador.Encriptar(BE.Clave);
-            base.Modificar(BE);                  
-                       
-                        
-        }
-
-
-
-
-
         public UsuarioBE Login(UsuarioBE UsuBE)
         {
             Boolean usuEncontrado = false;
 
-
-            foreach (UsuarioBE UsuarioE in base.Listar())
+            foreach (UsuarioBE UsuarioE in base.ListAll())
             {
-            
-                if (UsuBE.NombreUsuario == UsuarioE.NombreUsuario)
-                {                   
+
+                if (UsuBE.nombreUsuario == UsuarioE.nombreUsuario)
+                {
                     if (encriptador.Comparar(UsuBE, UsuarioE) != false)
                     {
                         UsuBE = UsuarioE;
@@ -88,7 +57,7 @@ namespace Imp.BLL
                         UsuBE = null;
                         break;
                     }
-                }               
+                }
 
             }
             if (usuEncontrado == false)
@@ -99,16 +68,10 @@ namespace Imp.BLL
             return UsuBE;
         }
 
-
-
-
-
         public void CerrarSesion()
         {
             Singleton.Instancia.EliminarInstancia();
         }
-
-
 
         public void asignarPermisos(UsuarioBE usuBE, Permiso_ServicioBE permisoBE)
         {
@@ -119,29 +82,5 @@ namespace Imp.BLL
         {
             UsuRepositorio.QuitarPermiso(usuBE, perBE);
         }
-
-
-        public void asignarEspecialidad(UsuarioBE usuBE, EspecialidadBE especBE)
-        {
-            UsuRepositorio.asignarEspecialidad(usuBE, especBE);
-
-        }
-
-        public List<UsuarioBE> listarMedicosXEspecialidad(EspecialidadBE especBE)
-        {
-            return UsuRepositorio.listarMedicosXEspecialidad(especBE);
-        }
-
-        public List<UsuarioBE> listarMedicos()
-        {
-             return UsuRepositorio.listarMedicos();
-        }
-
-
-        
-       
-
-
-
     }
 }

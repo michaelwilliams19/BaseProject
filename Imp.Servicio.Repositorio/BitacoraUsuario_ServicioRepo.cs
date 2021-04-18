@@ -1,42 +1,34 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using fw.ServicioBE;
-using fw.Servicio.Repositorio;
-using Imp.ServicioBE;
+﻿using System.Collections.Generic;
+using fw.ServiceManager.Repositories;
+using Imp.ServicesManagerEntities;
 using SQL.Provider;
-using fw.Interfaces;
 
-namespace Imp.Servicio.Repositorio
+namespace Imp.ServicesManager.Repositories
 {
-    public class BitacoraUsuario_ServicioRepo : ServicioRepositorio<BitacoraUsuario_ServicioBE>
+    public class BitacoraUsuario_ServicioRepo : ServiceManagerRepository<BitacoraUsuario_ServicioBE>
     {
-
         public BitacoraUsuario_ServicioRepo() : base(new BitacoraUsuarioSQL())
         {
-
         }
 
-        public override void Alta(BitacoraUsuario_ServicioBE BE)
+        public override void Save(BitacoraUsuario_ServicioBE BE)
         {
-            _Contexto.Alta(BE);
+            context.Save(BE);
         }
 
-        public override void Baja(BitacoraUsuario_ServicioBE BE)
+        public override void Delete(BitacoraUsuario_ServicioBE BE)
         {
-            _Contexto.Baja(BE);
+            context.Delete(BE);
         }
 
-        public override IList<BitacoraUsuario_ServicioBE> Listar()
+        public override IList<BitacoraUsuario_ServicioBE> ListAll()
         {
-            return _Contexto.Listar();
+            return context.ListAll();
         }
 
-        public override void Modificar(BitacoraUsuario_ServicioBE BE)
+        public override void Update(BitacoraUsuario_ServicioBE BE)
         {
-            _Contexto.Modificar(BE);
+            context.Update(BE);
         }
     }
 }

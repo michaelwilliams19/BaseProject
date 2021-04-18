@@ -3,28 +3,28 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using fw.ServicioBE;
-using Imp.ServicioBE;
-using Imp.BE;
+using fw.ServiceManagerEntities;
+using Imp.ServicesManagerEntities;
+using Imp.Entities;
 
 
 namespace SQL.Provider
 {
     public class PermisoSQL : ContextoSQL<Permiso_ServicioBE>
     {
-        public override void Alta(Permiso_ServicioBE BE)
+        public override void Save(Permiso_ServicioBE BE)
         {
             string SentenciaAlta = string.Format("insert into permiso(id,nombre,DVH) values('{0}','{1}','{2}')", BE.ID, BE.Nombre, BE.dvh);
             this.ABM_Asistentes(SentenciaAlta);
         }
 
-        public override void Baja(Permiso_ServicioBE BE)
+        public override void Delete(Permiso_ServicioBE BE)
         {
             string SentenciaBaja = string.Format("Delete from permiso where id='{0}'", BE.ID);
             this.ABM_Asistentes(SentenciaBaja);
         }
 
-        public override IList<Permiso_ServicioBE> Listar()
+        public override IList<Permiso_ServicioBE> ListAll()
         {
             string SentenciaListar = string.Format("select * from permiso");
             IList<Permiso_ServicioBE> ListaDePermisos = new List<Permiso_ServicioBE>();
@@ -61,7 +61,7 @@ namespace SQL.Provider
         }
 
 
-        public override void Modificar(Permiso_ServicioBE BE)
+        public override void Update(Permiso_ServicioBE BE)
         {
             string SentenciaModificar = string.Format("update Permiso set Nombre= '{0}' where id= '{1}';", BE.Nombre, BE.ID);
             this.ABM_Asistentes(SentenciaModificar);

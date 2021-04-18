@@ -1,36 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using fw.ServicioBE;
-using fw.Servicio.BLL;
-using Imp.ServicioBE;
-using fw.Interfaces;
-using Imp.Servicio.Repositorio;
+﻿using fw.ServiceManager.Services;
+using Imp.ServicesManagerEntities;
+using Imp.ServicesManager.Repositories;
 
-namespace Imp.Servicio
+namespace Imp.ServicesManager
 {
-    public class Backup_ServicioBLL : Servicio<Backup_ServicioBE>
+    public class Backup_ServicioBLL : ServiceManager<Backup_ServicioBE>
     {
         Backup_ServicioRepo backupRepo = new Backup_ServicioRepo();
 
         public Backup_ServicioBLL() : base(new Backup_ServicioRepo())
         {
-
-
         }
-
 
         public void RealizarRestore(Backup_ServicioBE backupBE)
         {
             backupRepo.RealizarRestore(backupBE);
-                       
         }
-
-
-        
-
-
     }
 }

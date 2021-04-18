@@ -1,14 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using fw.BE;
-using Imp.BE;
-using fw.ServicioBE;
-using Imp.ServicioBE;
+﻿using Imp.ServicesManagerEntities;
 using System.Collections.Specialized;
-using fw.Interfaces;
 
 namespace Imp.ValidatorBE
 {
@@ -19,8 +10,7 @@ namespace Imp.ValidatorBE
             if (string.IsNullOrEmpty(BE.Nombre))
                 valueValidator.Add("1", "El permiso debe tener un nombre");
 
-            return valueValidator;
-                    
+            return valueValidator;                    
         }
     }
 }

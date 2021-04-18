@@ -1,24 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using fw.Interfaces;
-using fw.ServicioBE;
-
-namespace Imp.ServicioBE
+﻿namespace Imp.ServicesManagerEntities
 {
-   public class DVV_BE : fw.ServicioBE.ServicioBE
+   public class DVV_BE : fw.ServiceManagerEntities.ServiceManagerEntity
    {
-
-        private string _digitoVerificador;
-        public string digitoVerificador
-        {
-            get { return _digitoVerificador; }
-            set { _digitoVerificador = value; }
-        }
-
-
-
+        public string digitoVerificador { get; set; }
     }
 }

@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data.SqlClient;
 using fw.Interfaces;
-using Imp.ServicioBE;
+using Imp.ServicesManagerEntities;
 using System.Configuration;
 
 namespace SQL.Provider
@@ -83,24 +83,24 @@ namespace SQL.Provider
             string digitoTabla = "";
 
             IList<T> ListaEntidad = new List<T>();
-            ListaEntidad = this.Listar();
+            ListaEntidad = this.ListAll();
             foreach (IBaseEntity item in ListaEntidad)
             {
                 digitoTabla += item.dvh;
             }
 
-            miDVV.Nombre = nombreTabla;
+            miDVV.nombre = nombreTabla;
             miDVV.digitoVerificador = digitoTabla;
 
-            dvvSQL.Modificar(miDVV);
+            dvvSQL.Update(miDVV);
 
         }
 
 
-        public abstract void Alta(T BE);
-        public abstract void Baja(T BE);
-        public abstract IList<T> Listar();
-        public abstract void Modificar(T BE);
+        public abstract void Save(T BE);
+        public abstract void Delete(T BE);
+        public abstract IList<T> ListAll();
+        public abstract void Update(T BE);
         
 
     }

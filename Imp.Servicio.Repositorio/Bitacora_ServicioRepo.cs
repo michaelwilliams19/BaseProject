@@ -1,43 +1,35 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using fw.ServicioBE;
-using fw.Servicio.Repositorio;
-using Imp.ServicioBE;
+﻿using System.Collections.Generic;
+using fw.ServiceManager.Repositories;
+using Imp.ServicesManagerEntities;
 using SQL.Provider;
-using fw.Interfaces;
 
 
-namespace Imp.Servicio.Repositorio
+namespace Imp.ServicesManager.Repositories
 {
-    public class Bitacora_ServicioRepo : ServicioRepositorio<BitacoraBE>
+    public class Bitacora_ServicioRepo : ServiceManagerRepository<BitacoraBE>
     {
-
         public Bitacora_ServicioRepo() : base(new BitacoraEventosSQL())
         {
-
         }
 
-        public override void Alta(BitacoraBE BE)
+        public override void Save(BitacoraBE BE)
         {
-            _Contexto.Alta(BE);
+            context.Save(BE);
         }
 
-        public override void Baja(BitacoraBE BE)
+        public override void Delete(BitacoraBE BE)
         {
-            _Contexto.Baja(BE);
+            context.Delete(BE);
         }
 
-        public override IList<BitacoraBE> Listar()
+        public override IList<BitacoraBE> ListAll()
         {
-            return _Contexto.Listar();
+            return context.ListAll();
         }
 
-        public override void Modificar(BitacoraBE BE)
+        public override void Update(BitacoraBE BE)
         {
-            _Contexto.Modificar(BE);
+            context.Update(BE);
         }
     }
 }

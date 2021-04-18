@@ -1,42 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using fw.Interfaces;
-using fw.ServicioBE;
-
-
-namespace Imp.ServicioBE 
+﻿namespace Imp.ServicesManagerEntities
 {
-    public class BitacoraBE : fw.ServicioBE.ServicioBE
+    public class BitacoraBE : fw.ServiceManagerEntities.ServiceManagerEntity
     {
-
-        private string _UsuarioResponsable;
-
-        public string UsuarioResponsable
-        {
-            get { return _UsuarioResponsable; }
-            set { _UsuarioResponsable = value; }
-        }
-
-        private TipoEvento _EventoOcurrido;
-        public TipoEvento EventoOcurrido
-        {
-            get { return _EventoOcurrido; }
-            set { _EventoOcurrido = value; }
-        }
-
+        public string UsuarioResponsable { get; set; }
+        public TipoEvento EventoOcurrido { get; set; }
         public enum TipoEvento
         {
-            Login=1,
-            Logout=2,
-            Backup=3,
-            Restore=4
+            Login = 1,
+            Logout = 2,
+            Backup = 3,
+            Restore = 4
         };
-
-
-
-
     }
 }

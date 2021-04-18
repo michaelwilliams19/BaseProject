@@ -9,13 +9,7 @@ namespace fw.Interfaces
     public interface IBaseEntity : Idvh
     {
         string ID { get; set; }
-
-        string FechaCreacion { get; set; }
-
-        string FechaEliminacion { get; set; }
-
-        string Nombre { get; set; }
-
-
+        DateTime fechaCreacion { get; set; }
+        DateTime fechaEliminacion { get; set; }
     }
 }

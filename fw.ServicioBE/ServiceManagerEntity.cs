@@ -1,15 +1,18 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using fw.Interfaces;
 
-namespace Imp.Entities
+namespace fw.ServiceManagerEntities
 {
-    public class UsuarioBE : IUsuario
+    public class ServiceManagerEntity : IBaseEntity
     {
         public string ID { get; set; }
-        public string nombreUsuario { get; set; }
-        public string clave { get; set; }
         public DateTime fechaCreacion { get; set; }
         public DateTime fechaEliminacion { get; set; }
+        public string nombre { get; set; }
         public string dvh { get; set; }
     }
 }

@@ -1,39 +1,34 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using fw.ServicioBE;
-using fw.Servicio.Repositorio;
-using Imp.ServicioBE;
+﻿using System.Collections.Generic;
+using fw.ServiceManager.Repositories;
+using Imp.ServicesManagerEntities;
 using SQL.Provider;
-using fw.Interfaces;
 
-namespace Imp.Servicio.Repositorio
+namespace Imp.ServicesManager.Repositories
 {
-    public class DVV_Repositorio : ServicioRepositorio<DVV_BE>
+    public class DVV_Repositorio : ServiceManagerRepository<DVV_BE>
     {
         public DVV_Repositorio() : base(new DVVContexto())
-        {}
-
-        public override void Alta(DVV_BE BE)
         {
-            _Contexto.Alta(BE);
         }
 
-        public override void Baja(DVV_BE BE)
+        public override void Save(DVV_BE BE)
         {
-            _Contexto.Baja(BE);
+            context.Save(BE);
         }
 
-        public override IList<DVV_BE> Listar()
+        public override void Delete(DVV_BE BE)
         {
-            return _Contexto.Listar();
+            context.Delete(BE);
         }
 
-        public override void Modificar(DVV_BE BE)
+        public override IList<DVV_BE> ListAll()
         {
-            _Contexto.Modificar(BE);
+            return context.ListAll();
+        }
+
+        public override void Update(DVV_BE BE)
+        {
+            context.Update(BE);
         }
     }
 }

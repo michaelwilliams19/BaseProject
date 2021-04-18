@@ -1,57 +1,40 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using fw.ServicioBE;
-using fw.Servicio.Repositorio;
-using Imp.ServicioBE;
+﻿using System.Collections.Generic;
+using fw.ServiceManager.Repositories;
+using Imp.ServicesManagerEntities;
 using SQL.Provider;
-using fw.Interfaces;
 
-namespace Imp.Servicio.Repositorio
+namespace Imp.ServicesManager.Repositories
 {
-    public class Backup_ServicioRepo : ServicioRepositorio<Backup_ServicioBE>
+    public class Backup_ServicioRepo : ServiceManagerRepository<Backup_ServicioBE>
     {
-
-
         BackupSQL contextoSQL = new BackupSQL();
-
         public Backup_ServicioRepo() :base(new BackupSQL())
         {
-
-
         }
 
-        public override void Alta(Backup_ServicioBE BE)
+        public override void Save(Backup_ServicioBE BE)
         {
-            _Contexto.Alta(BE);
+            context.Save(BE);
         }
 
-        public override void Baja(Backup_ServicioBE BE)
+        public override void Delete(Backup_ServicioBE BE)
         {
-            _Contexto.Baja(BE);
+            context.Delete(BE);
         }
 
-        public override IList<Backup_ServicioBE> Listar()
+        public override IList<Backup_ServicioBE> ListAll()
         {
-            return _Contexto.Listar();
+            return context.ListAll();
         }
 
-        public override void Modificar(Backup_ServicioBE BE)
+        public override void Update(Backup_ServicioBE BE)
         {
-            _Contexto.Modificar(BE);
+            context.Update(BE);
         }
 
         public void RealizarRestore(Backup_ServicioBE backupBE)
         {
-            contextoSQL.RealizarRestore(backupBE);       
-
-            
-
-            
+            contextoSQL.RealizarRestore(backupBE);
         }
-
-
     }
 }

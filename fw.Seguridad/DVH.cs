@@ -1,26 +1,18 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using fw.Interfaces;
 
-
-namespace fw.Seguridad
+namespace fw.Security
 {
-    public class DVH 
-    {           
-        
+    public class DVH
+    {
         public static string GenerarDVH(Idvh BE)
         {
             string dvh = string.Empty;
             Type t = BE.GetType();
-
             var props = t.GetProperties();
 
             foreach (var p in props)
             {
-
                 Console.WriteLine(p);
                 if (p.PropertyType.FullName.Equals(typeof(DateTime).FullName))
                 {
@@ -29,20 +21,10 @@ namespace fw.Seguridad
                 }
                 else
                 {
-
-                }
-                {
-                   BE.dvh += p.GetValue(BE);
+                    BE.dvh += p.GetValue(BE);
                 }
             }
-
-
             return BE.dvh;
-
-
         }
-
-
-
     }
 }

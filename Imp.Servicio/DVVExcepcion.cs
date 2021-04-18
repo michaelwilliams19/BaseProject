@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Imp.Servicio
+namespace Imp.ServicesManager
 {
     public class DVVExcepcion : Exception
     {
@@ -15,8 +15,5 @@ namespace Imp.Servicio
                 return "Digito verificador erroneo";
             }
         }
-
-
-
     }
 }

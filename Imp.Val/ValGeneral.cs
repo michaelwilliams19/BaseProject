@@ -1,16 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Imp.Validator;
+﻿using Imp.Validator;
 using fw.Interfaces;
 
 namespace Imp.Val
 {
     public static class ValGeneral
     {
-
         public static bool validarVal(IBaseEntity BE)
         {
             ValidatorGeneral.Validar(BE);
@@ -27,9 +21,6 @@ namespace Imp.Val
             //        throw new ValidatorException(nvc);
 
             //    return true;
-            //}
-
-
-     
+            //}     
     }
 }

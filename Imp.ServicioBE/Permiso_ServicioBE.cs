@@ -1,44 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using fw.ServicioBE;
-using fw.Interfaces;
+﻿using System.Collections.Generic;
 
-namespace Imp.ServicioBE
+namespace Imp.ServicesManagerEntities
 {
-    public class Permiso_ServicioBE : fw.ServicioBE.ServicioBE
+    public class Permiso_ServicioBE : fw.ServiceManagerEntities.ServiceManagerEntity
     {
-
         //public static List<PermisoBE> listaHijos = new List<PermisoBE>();
-
-
-        private string _Nombre;
-        public string Nombre
-        {
-            get { return _Nombre; }
-            set { _Nombre = value; }
-        }
-
-
-        private List<Permiso_ServicioBE> _listahijos;
-        public List<Permiso_ServicioBE> listaHijos
-        {
-            get { return _listahijos; }
-            set { _listahijos = value; }
-        }
-
-     
-
-
-
-
-
-
-
-
-
-
+        public string Nombre { get; set; }        
+        public List<Permiso_ServicioBE> listaHijos { get; set; }
     }
 }

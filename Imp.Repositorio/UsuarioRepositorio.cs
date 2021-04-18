@@ -3,15 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using fw.BE;
-using Imp.BE;
-using fw.Repositorio;
+using fw.Entities;
+using Imp.Entities;
+using fw.Repositories;
 using SQL.Provider;
-using Imp.ServicioBE;
+using Imp.ServicesManagerEntities;
 
-namespace Imp.Repositorio
+namespace Imp.Repositories
 {
-    public class UsuarioRepositorio : Repositorio<UsuarioBE>
+    public class UsuarioRepositorio : Repository<UsuarioBE>
     {
         UsuarioSQL usuContexto = new UsuarioSQL();
 
@@ -20,24 +20,24 @@ namespace Imp.Repositorio
         }
 
 
-        public override void Alta(UsuarioBE BE)
+        public override void Save(UsuarioBE BE)
         {
-            _contexto.Alta(BE);
+            context.Save(BE);
         }
 
-        public override void Baja(UsuarioBE BE)
+        public override void Delete(UsuarioBE BE)
         {
-            _contexto.Baja(BE);
+            context.Delete(BE);
         }
 
-        public override IList<UsuarioBE> Listar()
+        public override IList<UsuarioBE> ListAll()
         {
-            return _contexto.Listar();
+            return context.ListAll();
         }
 
-        public override void Modificar(UsuarioBE BE)
+        public override void Update(UsuarioBE BE)
         {
-            _contexto.Modificar(BE);
+            context.Update(BE);
         }
 
 
@@ -51,33 +51,10 @@ namespace Imp.Repositorio
             usuContexto.QuitarPermiso(usuBE, perBE);
         }
 
-
-        public void asignarEspecialidad(UsuarioBE usuBE, EspecialidadBE especBE)
-        {
-            usuContexto.AsignarEspecialidad(usuBE, especBE);
-        }
-
-        public List<UsuarioBE> listarMedicosXEspecialidad(EspecialidadBE especBE)
-        {
-            return usuContexto.ListarUsuariosXEspecialidad(especBE);
-        }
-
-        public List<UsuarioBE> listarMedicos()
-        {
-            return usuContexto.ListarMedicos();
-        }
-
-
         public int ObtenerID()
         {
             UsuarioSQL sql1 = new UsuarioSQL();
-
             return sql1.ObtenerProximoID();
-
         }
-
-
-        
-
     }
 }

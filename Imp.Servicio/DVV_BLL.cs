@@ -1,25 +1,19 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using fw.ServicioBE;
-using fw.Servicio.BLL;
-using Imp.ServicioBE;
+using fw.ServiceManager.Services;
+using Imp.ServicesManagerEntities;
 using fw.Interfaces;
-using Imp.Servicio.Repositorio;
-using fw.Seguridad;
-using System.Reflection;
+using Imp.ServicesManager.Repositories;
+using fw.Security;
 using SQL.Provider;
-using fw.BE;
-using Imp.BE;
+using Imp.Entities;
 
-namespace Imp.Servicio
+namespace Imp.ServicesManager
 {
-    public class DVV_BLL : Servicio<DVV_BE>
+    public class DVV_BLL : ServiceManager<DVV_BE>
     {
         public DVV_BLL() : base(new DVV_Repositorio())
-        { }
+        {
+        }
 
         public void GenerarDVV()
         {
@@ -27,39 +21,39 @@ namespace Imp.Servicio
             string digito = string.Empty;
             UsuarioSQL usuSQL = new UsuarioSQL();
 
-            foreach (DVV_BE item in Listar())
+            foreach (DVV_BE item in ListAll())
             {
-                if (item.Nombre == "Usuario")
+                if (item.nombre == "Usuario")
                 {
                     ExisteDVV = true;
                     break;
                 }
             }
+
             if (!ExisteDVV)
-            {              
-                foreach (UsuarioBE item in usuSQL.Listar())
+            {
+                foreach (UsuarioBE item in usuSQL.ListAll())
                 {
                     digito += GetDVH(item);
                 }
                 DVV_BE dvv = new DVV_BE();
-                dvv.Nombre = "Usuario";
+                dvv.nombre = "Usuario";
                 dvv.digitoVerificador = digito;
-                this.Alta(dvv);
+                this.Save(dvv);
             }
             else
-            {                
+            {
                 DVV_BE dv = new DVV_BE();
-                foreach (UsuarioBE item in usuSQL.Listar())
+                foreach (UsuarioBE item in usuSQL.ListAll())
                 {
                     digito += GetDVH(item);
                 }
-                
-                dv.Nombre = "Usuario";                
+
+                dv.nombre = "Usuario";
                 dv.digitoVerificador = digito;
-                this.Modificar(dv);               
+                this.Update(dv);
             }
         }
-
 
         public static string GetDVH(IBaseEntity entity)
         {
@@ -71,44 +65,36 @@ namespace Imp.Servicio
 
             foreach (var p in props)
             {
-                if ((p.Name != "DVH") || (p.Name !="dvh"))
+                if ((p.Name != "DVH") || (p.Name != "dvh"))
                 {
                     dvh += p.GetValue(entity);
                 }
-
             }
 
-            
             dvh = miEncriptador.Encriptar(dvh);
-
             return dvh;
         }
 
         public void calcularDVVActual()
         {
-
             string digito2 = string.Empty;
-
             UsuarioSQL usuSQL = new UsuarioSQL();
 
-            foreach (UsuarioBE item in usuSQL.Listar())
+            foreach (UsuarioBE item in usuSQL.ListAll())
             {
                 digito2 += GetDVH(item);
             }
 
-            foreach (DVV_BE item in Listar())
+            foreach (DVV_BE item in ListAll())
             {
-                if (item.Nombre == "Usuario")
+                if (item.nombre == "Usuario")
                 {
                     if (digito2 != item.digitoVerificador)
                     {
                         //throw new DVVExcepcion();
                     }
                 }
-
             }
-
         }
-
     }
 }

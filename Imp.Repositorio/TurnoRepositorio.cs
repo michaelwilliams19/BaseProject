@@ -1,39 +1,33 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using fw.BE;
-using Imp.BE;
-using fw.Repositorio;
+﻿using System.Collections.Generic;
+using Imp.Entities;
+using fw.Repositories;
 using SQL.Provider;
-using Imp.ServicioBE;
 
-namespace Imp.Repositorio
+namespace Imp.Repositories
 {
-    public class TurnoRepositorio : Repositorio<TurnoBE>
+    public class TurnoRepositorio : Repository<TurnoBE>
     {
         public TurnoRepositorio() : base(new TurnoContexto())
         { }
 
-        public override void Alta(TurnoBE BE)
+        public override void Save(TurnoBE BE)
         {
-            _contexto.Alta(BE);
+            context.Save(BE);
         }
 
-        public override void Baja(TurnoBE BE)
+        public override void Delete(TurnoBE BE)
         {
-            _contexto.Baja(BE);
+            context.Delete(BE);
         }
 
-        public override IList<TurnoBE> Listar()
+        public override IList<TurnoBE> ListAll()
         {
-            return _contexto.Listar();
+            return context.ListAll();
         }
 
-        public override void Modificar(TurnoBE BE)
+        public override void Update(TurnoBE BE)
         {
-            _contexto.Modificar(BE);
+            context.Update(BE);
         }
     }
 }

@@ -3,16 +3,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using fw.ServicioBE;
-using Imp.ServicioBE;
+using fw.ServiceManagerEntities;
+using Imp.ServicesManagerEntities;
 
 namespace SQL.Provider
 {
     public class BackupSQL : ContextoSQL<Backup_ServicioBE>
     {
-        public override void Alta(Backup_ServicioBE BE)
+        public override void Save(Backup_ServicioBE BE)
         {
-            string SentenciaAlta = string.Format("insert into Backap(Backup_id,Backup_Nombre,Backup_Ruta,Backup_Fechacreacion,Backup_Fechaeliminacion)values('{0}','{1}','{2}','{3}','{4}')", BE.ID, BE.NombreBackup, BE.Ruta, BE.FechaCreacion, BE.FechaEliminacion);
+            string SentenciaAlta = string.Format("insert into Backap(Backup_id,Backup_Nombre,Backup_Ruta,Backup_Fechacreacion,Backup_Fechaeliminacion)values('{0}','{1}','{2}','{3}','{4}')", BE.ID, BE.NombreBackup, BE.Ruta, BE.fechaCreacion, BE.fechaEliminacion);
             this.ABM_Asistentes(SentenciaAlta);
 
                        
@@ -35,15 +35,12 @@ namespace SQL.Provider
             this.ABM_Asistentes(sentenciaBD);
         }
 
-
-
-
-        public override void Baja(Backup_ServicioBE BE)
+        public override void Delete(Backup_ServicioBE BE)
         {
             throw new NotImplementedException();
         }
 
-        public override IList<Backup_ServicioBE> Listar()
+        public override IList<Backup_ServicioBE> ListAll()
         {
             string SentenciaListar = string.Format("select * from backap");
             List<Backup_ServicioBE> ListaBackups = new List<Backup_ServicioBE>();
@@ -73,19 +70,14 @@ namespace SQL.Provider
             backupBE.ID = Convert.ToString(Fila["backup_ID"]);
             backupBE.NombreBackup = Convert.ToString(Fila["backup_nombre"]);
             backupBE.Ruta = Convert.ToString(Fila["backup_ruta"]);            
-            backupBE.FechaCreacion = Convert.ToString(Fila["backup_FechaCreacion"]);
-            backupBE.FechaEliminacion = Convert.ToString(Fila["backup_FechaEliminacion"]);
+            backupBE.fechaCreacion = Convert.ToDateTime(Fila["backup_FechaCreacion"]);
+            backupBE.fechaEliminacion = Convert.ToDateTime(Fila["backup_FechaEliminacion"]);
         }
 
-
-
-
-
-        public override void Modificar(Backup_ServicioBE BE)
+        public override void Update(Backup_ServicioBE BE)
         {
             throw new NotImplementedException();
         }
-
 
         public int ObtenerProximoID()
         {

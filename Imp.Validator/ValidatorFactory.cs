@@ -1,29 +1,20 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Reflection;
 using fw.Interfaces;
-using System.IO;
 using fw.Validator;
-using Imp.ValidatorBE;
 
 namespace Imp.Validator
 {
     public class ValidatorFactory
     {
-
         public static IValidator<T> ObtenerValidator<T>() where T : IBaseEntity
         {
             var t = typeof(T);
-
             string name = string.Format("{0}Validator", t.Name);
 
             try
             {
                 var ns = "Imp.ValidatorBE";
-
 
                 #region "intentosreflection"
                 // Assembly m_assembly = Assembly.LoadFrom("Implementacion.Imp.Validator.dll");
@@ -41,23 +32,14 @@ namespace Imp.Validator
                 //IValidator<T> validator = miEnsamblado.CreateInstance("Imp.ValidatorBE.UsuarioBEValidator") as IValidator<T>;
                 #endregion
 
-                IValidator<T> validator = (IValidator<T>)Assembly.Load(ns).CreateInstance(String.Format("{0}.{1}",ns, name));
-                           
-                
+                IValidator<T> validator = (IValidator<T>)Assembly.Load(ns).CreateInstance(String.Format("{0}.{1}",ns, name));                         
 
-                if (validator == null) return new MockValidator<T>();
-                return validator;
-
+                return validator == null ? new MockValidator<T>() : validator;
             }
             catch (Exception)
             {
-
                 return new MockValidator<T>();
-            }           
-
+            }       
         }
-        
-
-
     }
 }

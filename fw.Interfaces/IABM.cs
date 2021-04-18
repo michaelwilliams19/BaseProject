@@ -1,17 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace fw.Interfaces
 {
-   public interface IABM<T> where T : IBaseEntity
-    {        
-            void Alta(T BE);
-            void Baja(T BE);
-            void Modificar(T BE);
-            IList<T> Listar();        
-
+    public interface IABM<T> where T : IBaseEntity
+    {
+        void Save(T entity);
+        void Delete(T entity);
+        void Update(T entity);
+        IList<T> ListAll();
     }
 }
