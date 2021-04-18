@@ -21,6 +21,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <LangVersion>8.0</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -29,6 +30,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <LangVersion>8.0</LangVersion>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -41,7 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Servicio.cs" />
+    <Compile Include="ServiceManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -49,9 +51,9 @@
       <Project>{0d4eaca1-3684-49fb-a423-326e525eff07}</Project>
       <Name>fw.Interfaces</Name>
     </ProjectReference>
-    <ProjectReference Include="..\fw.Servicio.Repositorio\fw.Servicio.Repositorio.csproj">
+    <ProjectReference Include="..\fw.Servicio.Repositorio\fw.ServicesManagerRepository.csproj">
       <Project>{8b75d37b-3547-48fb-952a-0fa23fca077a}</Project>
-      <Name>fw.Servicio.Repositorio</Name>
+      <Name>fw.ServicesManagerRepository</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -21,6 +21,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <LangVersion>8.0</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -29,6 +30,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <LangVersion>8.0</LangVersion>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -41,59 +43,54 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ComentarioBLL.cs" />
-    <Compile Include="EspecialidadBLL.cs" />
-    <Compile Include="MedicoBLL.cs" />
-    <Compile Include="PacienteBLL.cs" />
-    <Compile Include="PuntajeBLL.cs" />
     <Compile Include="TurnoBLL.cs" />
     <Compile Include="UsuarioBLL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\fw.BE\fw.BE.csproj">
+    <ProjectReference Include="..\fw.BE\fw.Entities.csproj">
       <Project>{70526053-2b6b-4d3a-804e-da996b81d7b7}</Project>
-      <Name>fw.BE</Name>
+      <Name>fw.Entities</Name>
     </ProjectReference>
-    <ProjectReference Include="..\fw.BLL\fw.BLL.csproj">
+    <ProjectReference Include="..\fw.BLL\fw.Services.csproj">
       <Project>{a9f45a17-4119-4a1e-98ef-da25820e1e06}</Project>
-      <Name>fw.BLL</Name>
+      <Name>fw.Services</Name>
     </ProjectReference>
     <ProjectReference Include="..\fw.Interfaces\fw.Interfaces.csproj">
       <Project>{0d4eaca1-3684-49fb-a423-326e525eff07}</Project>
       <Name>fw.Interfaces</Name>
     </ProjectReference>
-    <ProjectReference Include="..\fw.Repositorio\fw.Repositorio.csproj">
+    <ProjectReference Include="..\fw.Repositorio\fw.Repositories.csproj">
       <Project>{16ecb962-86fb-4f0f-888c-3b9f9cac40e7}</Project>
-      <Name>fw.Repositorio</Name>
+      <Name>fw.Repositories</Name>
     </ProjectReference>
-    <ProjectReference Include="..\fw.Seguridad\fw.Seguridad.csproj">
+    <ProjectReference Include="..\fw.Seguridad\fw.Security.csproj">
       <Project>{9f256280-a69b-4083-80dd-dc6971281705}</Project>
-      <Name>fw.Seguridad</Name>
+      <Name>fw.Security</Name>
     </ProjectReference>
-    <ProjectReference Include="..\fw.Servicio.BLL\fw.Servicio.csproj">
+    <ProjectReference Include="..\fw.Servicio.BLL\fw.ServicesManager.csproj">
       <Project>{0b096b7b-da02-4c99-899a-a6a3661ca045}</Project>
-      <Name>fw.Servicio</Name>
+      <Name>fw.ServicesManager</Name>
     </ProjectReference>
-    <ProjectReference Include="..\fw.ServicioBE\fw.ServicioBE.csproj">
+    <ProjectReference Include="..\fw.ServicioBE\fw.ServicesManagerEntities.csproj">
       <Project>{ff38b677-3476-4693-898e-d25cb58d4638}</Project>
-      <Name>fw.ServicioBE</Name>
+      <Name>fw.ServicesManagerEntities</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Imp.BE\Imp.BE.csproj">
+    <ProjectReference Include="..\Imp.BE\Imp.Entities.csproj">
       <Project>{1d32420a-e0d5-49c4-b83f-a77dd3d46ba6}</Project>
-      <Name>Imp.BE</Name>
+      <Name>Imp.Entities</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Imp.Repositorio\Imp.Repositorio.csproj">
+    <ProjectReference Include="..\Imp.Repositorio\Imp.Repositories.csproj">
       <Project>{02c16077-f02d-428e-a8fb-c43189b2b6c8}</Project>
-      <Name>Imp.Repositorio</Name>
+      <Name>Imp.Repositories</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Imp.ServicioBE\Imp.ServicioBE.csproj">
+    <ProjectReference Include="..\Imp.ServicioBE\Imp.ServicesManagerEntities.csproj">
       <Project>{a11cf2f9-a894-476a-b4da-4b4c6b5de0f2}</Project>
-      <Name>Imp.ServicioBE</Name>
+      <Name>Imp.ServicesManagerEntities</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Imp.Servicio\Imp.Servicio.csproj">
+    <ProjectReference Include="..\Imp.Servicio\Imp.ServicesManager.csproj">
       <Project>{62de781c-57a7-4597-82da-f9b659e3d6f2}</Project>
-      <Name>Imp.Servicio</Name>
+      <Name>Imp.ServicesManager</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -21,6 +21,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <LangVersion>8.0</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -29,6 +30,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <LangVersion>8.0</LangVersion>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -41,20 +43,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ComentarioBE.cs" />
-    <Compile Include="EspecialidadBE.cs" />
-    <Compile Include="MedicoBE.cs" />
-    <Compile Include="OpinionBE.cs" />
-    <Compile Include="PacienteBE.cs" />
-    <Compile Include="PuntajeBE.cs" />
     <Compile Include="TurnoBE.cs" />
     <Compile Include="UsuarioBE.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\fw.BE\fw.BE.csproj">
+    <ProjectReference Include="..\fw.BE\fw.Entities.csproj">
       <Project>{70526053-2b6b-4d3a-804e-da996b81d7b7}</Project>
-      <Name>fw.BE</Name>
+      <Name>fw.Entities</Name>
     </ProjectReference>
     <ProjectReference Include="..\fw.Interfaces\fw.Interfaces.csproj">
       <Project>{0d4eaca1-3684-49fb-a423-326e525eff07}</Project>

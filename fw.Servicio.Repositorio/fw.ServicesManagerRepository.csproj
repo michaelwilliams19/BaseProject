@@ -55,9 +55,9 @@
       <Project>{0d4eaca1-3684-49fb-a423-326e525eff07}</Project>
       <Name>fw.Interfaces</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Imp.BE\Imp.BE.csproj">
+    <ProjectReference Include="..\Imp.BE\Imp.Entities.csproj">
       <Project>{1d32420a-e0d5-49c4-b83f-a77dd3d46ba6}</Project>
-      <Name>Imp.BE</Name>
+      <Name>Imp.Entities</Name>
     </ProjectReference>
     <ProjectReference Include="..\InMemory.Provider\InMemory.Provider.csproj">
       <Project>{e23bfdd5-ccee-46c3-8080-5672dd5a7462}</Project>

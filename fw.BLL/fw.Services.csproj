@@ -21,6 +21,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <LangVersion>8.0</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -29,6 +30,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <LangVersion>8.0</LangVersion>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -41,21 +43,21 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BLL.cs" />
+    <Compile Include="Service.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\fw.BE\fw.BE.csproj">
+    <ProjectReference Include="..\fw.BE\fw.Entities.csproj">
       <Project>{70526053-2b6b-4d3a-804e-da996b81d7b7}</Project>
-      <Name>fw.BE</Name>
+      <Name>fw.Entities</Name>
     </ProjectReference>
     <ProjectReference Include="..\fw.Interfaces\fw.Interfaces.csproj">
       <Project>{0d4eaca1-3684-49fb-a423-326e525eff07}</Project>
       <Name>fw.Interfaces</Name>
     </ProjectReference>
-    <ProjectReference Include="..\fw.Repositorio\fw.Repositorio.csproj">
+    <ProjectReference Include="..\fw.Repositorio\fw.Repositories.csproj">
       <Project>{16ecb962-86fb-4f0f-888c-3b9f9cac40e7}</Project>
-      <Name>fw.Repositorio</Name>
+      <Name>fw.Repositories</Name>
     </ProjectReference>
     <ProjectReference Include="..\Imp.Validator\Imp.Validator.csproj">
       <Project>{7C69A2A5-3807-45D5-B2A3-856CA08CA9B8}</Project>

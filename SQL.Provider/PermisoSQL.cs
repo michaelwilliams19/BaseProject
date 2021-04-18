@@ -53,8 +53,8 @@ namespace SQL.Provider
         {
             perbe.ID = Convert.ToString(Fila["ID"]);
             perbe.Nombre = Convert.ToString(Fila["Nombre"]);
-            perbe.FechaCreacion = Convert.ToString(Fila["fechacreacion"]);
-            perbe.FechaEliminacion = Convert.ToString(Fila["fechaeliminacion"]);
+            perbe.fechaCreacion = Convert.ToDateTime(Fila["fechacreacion"]);
+            perbe.fechaEliminacion = Convert.ToDateTime(Fila["fechaeliminacion"]);
             perbe.dvh = Convert.ToString(Fila["DVH"]);
             perbe.listaHijos = ObtenerHijosBD(perbe);
 

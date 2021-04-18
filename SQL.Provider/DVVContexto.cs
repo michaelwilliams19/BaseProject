@@ -12,7 +12,7 @@ namespace SQL.Provider
     {
         public override void Save(DVV_BE BE)
         {
-            string sentenciaAlta = string.Format("insert into DVV(ID,nombreTabla, fechaCreacion,fechaEliminacion, digitoVerificador,dvh) values('{0}','{1}','{2}','{3}','{4}','{5}')", BE.ID, BE.nombre, BE.FechaCreacion, BE.FechaEliminacion, BE.digitoVerificador,BE.dvh);
+            string sentenciaAlta = string.Format("insert into DVV(ID,nombreTabla, fechaCreacion,fechaEliminacion, digitoVerificador,dvh) values('{0}','{1}','{2}','{3}','{4}','{5}')", BE.ID, BE.nombre, BE.fechaCreacion, BE.fechaEliminacion, BE.digitoVerificador,BE.dvh);
             this.ABM_Asistentes(sentenciaAlta);
         }
 
@@ -50,8 +50,8 @@ namespace SQL.Provider
                 unDVV.ID = Convert.ToString(Fila["ID"]);
                 unDVV.nombre = Convert.ToString(Fila["NombreTabla"]);
                 unDVV.dvh = Convert.ToString(Fila["Dvh"]);
-                unDVV.FechaCreacion = Convert.ToString(Fila["fechaCreacion"]);
-                unDVV.FechaEliminacion = Convert.ToString(Fila["fechaEliminacion"]);
+                unDVV.fechaCreacion = Convert.ToDateTime(Fila["fechaCreacion"]);
+                unDVV.fechaEliminacion = Convert.ToDateTime(Fila["fechaEliminacion"]);
                 unDVV.digitoVerificador = Convert.ToString(Fila["digitoVerificador"]);
             }
             catch (Exception)

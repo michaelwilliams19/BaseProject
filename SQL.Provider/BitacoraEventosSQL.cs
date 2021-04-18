@@ -14,7 +14,7 @@ namespace SQL.Provider
         public override void Save(BitacoraBE BE)
         {
             string SentenciaAlta = string.Format("insert into Bitacora(Bit_id,Bit_tipoevento,Bit_fechaevento,Bit_FechaEliminacion,Bit_usuarioresponsable)values('{0}','{1}','{2}','{3}','{4}')",
-                                          BE.ID, BE.EventoOcurrido, BE.FechaCreacion, BE.FechaEliminacion, BE.UsuarioResponsable);
+                                          BE.ID, BE.EventoOcurrido, BE.fechaCreacion, BE.fechaEliminacion, BE.UsuarioResponsable);
 
             this.ABM_Asistentes(SentenciaAlta);
         }

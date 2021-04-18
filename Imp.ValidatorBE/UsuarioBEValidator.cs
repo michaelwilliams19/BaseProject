@@ -12,8 +12,8 @@ namespace Imp.ValidatorBE
             Regex miRegex = new Regex("^[a-z]{5}[a-zA-Z0-9.-_]+$");
             MatchCollection miMatchCollection;
 
-            miMatchCollection = miRegex.Matches(BE.nombreUsuario);                    
-            
+            miMatchCollection = miRegex.Matches(BE.nombreUsuario);
+
             //if (miMatchCollection.Count == 0)
             //    valueValidator.Add("00", "El nombre de usuario debe ser alfanumerico y superior a 5 caracteres");
 
@@ -25,9 +25,6 @@ namespace Imp.ValidatorBE
 
             if (string.IsNullOrEmpty(BE.nombreUsuario))
                 valueValidator.Add("1", "El nombre de usuario es obligatorio");
-
-            if (string.IsNullOrEmpty(BE.nombre))
-                valueValidator.Add("2", "El nombre es obligatorio");
 
             if (string.IsNullOrEmpty(BE.clave))
                 valueValidator.Add("3", "La clave es obligatoria");
